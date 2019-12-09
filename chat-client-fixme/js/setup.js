@@ -127,7 +127,7 @@ var postData = function(message, username) {
     url: SERVER_URL,
     contentType: 'application/json',
     type: 'GET',
-    data: {createdAt: },
+    data: createdAt,
     success: function(data) {
       console.log('Success!', data);
     },
