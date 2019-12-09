@@ -23,6 +23,7 @@ var getData = function() {
 
 // Here we sort the server messages by 'Created at' and send them to displayData
 var processData = function(data) {
+  getData();
   var sortedData = data.results.sort(function(a, b) {
     var aDate = new Date(a.createdAt);
     var bDate = new Date(b.createdAt);
@@ -38,6 +39,7 @@ var processData = function(data) {
 };
 
 var checkNewData = function(data) {
+  getData();
   var compDate = newestDate; // eslint-disable-line no-use-before-define
   var newDate = new Date(data.results[0].createdAt);
   if (newDate > compDate) {
@@ -52,6 +54,7 @@ var newestDate = new Date();
 var userSelected;
 
 var displayData = function(data, user) {
+  getData();
   var $results = [];
   var resultCount = 0;
 
@@ -125,9 +128,9 @@ var postData = function(message, username) {
 
   $.ajax({
     url: SERVER_URL,
-    dataType: 'application/json',
+    dataType: 'json',
     type: 'GET',
-    data: {createdAt},
+    data: createdAt,
     success: function(data) {
       console.log('Success!', data);
     },
