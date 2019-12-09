@@ -56,7 +56,7 @@ var displayData = function(data, user) {
   var resultCount = 0;
 
   var i = 0;
-  while (resultCount > 10 && i < data.results.length) {
+  while (resultCount < 10 && i < data.results.length) {
 
     newestDate = new Date(data.results[0].createdAt);
 
@@ -106,7 +106,7 @@ var displayData = function(data, user) {
  
 //this is the method that is responsible for sending messages to the server.
 
-var postData = function(message, username, success) {
+var postData = function(message, username) {
   $.ajax({
     url: SERVER_URL,
     contentType: 'application/json',
@@ -121,18 +121,18 @@ var postData = function(message, username, success) {
     error: function(data) {
       console.log(data);
     }
-  });
+  }),
 
-  // $.ajax({
-  //   url: SERVER_URL,
-  //   dataType: 'application/json',
-  //   type: 'GET',
-  //   data: {createdAt},
-  //   success: function(data) {
-  //     console.log('Success!', data);
-  //   },
-  //   error: function(data) {
-  //     console.log(data);
-  //   }
-  // });
+  $.ajax({
+    url: SERVER_URL,
+    dataType: 'application/json',
+    type: 'GET',
+    data: {createdAt},
+    success: function(data) {
+      console.log('Success!', data);
+    },
+    error: function(data) {
+      console.log(data);
+    }
+  });
 };
