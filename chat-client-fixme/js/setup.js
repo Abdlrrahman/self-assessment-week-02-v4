@@ -121,7 +121,7 @@ var postData = function(message, username) {
     error: function(data) {
       console.log(data);
     }
-  });
+  })
 
   $.ajax({
     url: SERVER_URL,
