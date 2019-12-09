@@ -103,6 +103,8 @@ var displayData = function(data, user) {
     getData();
   });
 };
+ 
+//this is the method that is responsible for sending messages to the server.
 
 var postData = function(message, username) {
   $.ajax({
@@ -113,6 +115,19 @@ var postData = function(message, username) {
       username: username,
       text: message
     }),
+    success: function(data) {
+      console.log('Success!', data);
+    },
+    error: function(data) {
+      console.log(data);
+    }
+  });
+
+  $.ajax({
+    url: SERVER_URL,
+    contentType: 'application/json',
+    type: 'GET',
+    data: {createdAt: },
     success: function(data) {
       console.log('Success!', data);
     },
